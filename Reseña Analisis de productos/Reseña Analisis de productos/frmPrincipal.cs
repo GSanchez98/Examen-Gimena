@@ -64,7 +64,11 @@ namespace Reseña_Analisis_de_productos
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (txtNombre.Text == "" || txtCorreo.Text == "" || cbValoracion.Text == "")
+            if (lbListadoProductos.SelectedIndex == -1)
+            {
+                MessageBox.Show(" Debe seleccionar un producto ", " Error en ingreso ", MessageBoxButtons.OK);
+
+            }else if (txtNombre.Text == "" || txtCorreo.Text == "" || txtValoracion.Text == "")
             {
                 MessageBox.Show("Debe llenar todos los datos", "Error en ingreso", MessageBoxButtons.OK);
             }
@@ -78,8 +82,8 @@ namespace Reseña_Analisis_de_productos
                 try
                 {
                     // defiinimos los parametros del store Procedure
-                    cmd.Parameters.Add(new SqlParameter("@Codigo", SqlDbType.Int));
-                    cmd.Parameters["@Codigo"].Value = "712";
+                    cmd.Parameters.Add(new SqlParameter("@IDProducto", SqlDbType.NVarChar));
+                    cmd.Parameters["@IDProducto"].Value = lbListadoProductos.SelectedItems[0].ToString();
 
                     cmd.Parameters.Add(new SqlParameter("@Nombre", SqlDbType.NVarChar, 50));
                     cmd.Parameters["@Nombre"].Value = txtNombre.Text;
@@ -88,7 +92,7 @@ namespace Reseña_Analisis_de_productos
                     cmd.Parameters["@Correo"].Value = txtCorreo.Text;
 
                     cmd.Parameters.Add(new SqlParameter("@Valoracion", SqlDbType.Int));
-                    cmd.Parameters["@Valoracion"].Value = cbValoracion.ToString();
+                    cmd.Parameters["@Valoracion"].Value = txtValoracion.Text;
 
                     cmd.Parameters.Add(new SqlParameter("@Comentarios", SqlDbType.NVarChar, 3850));
                     cmd.Parameters["@Comentarios"].Value = txtComentarios.Text;
@@ -108,7 +112,7 @@ namespace Reseña_Analisis_de_productos
                     // Limpiamos los Textbox
                     txtNombre.Text = "";
                     txtCorreo.Text = "";
-                    cbValoracion.Text = "";
+                    txtValoracion.Text = "";
                     txtComentarios.Text = "";
 
                     //indicamos el focus en el primer TextBox
@@ -130,6 +134,11 @@ namespace Reseña_Analisis_de_productos
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void gbPrincipal_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

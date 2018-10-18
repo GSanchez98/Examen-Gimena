@@ -39,13 +39,13 @@
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.lbNombre = new System.Windows.Forms.Label();
             this.lbListadoProductos = new System.Windows.Forms.ListBox();
-            this.cbValoracion = new System.Windows.Forms.ComboBox();
+            this.txtValoracion = new System.Windows.Forms.TextBox();
             this.gbPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbPrincipal
             // 
-            this.gbPrincipal.Controls.Add(this.cbValoracion);
+            this.gbPrincipal.Controls.Add(this.txtValoracion);
             this.gbPrincipal.Controls.Add(this.btnSalir);
             this.gbPrincipal.Controls.Add(this.btnAceptar);
             this.gbPrincipal.Controls.Add(this.txtComentarios);
@@ -62,6 +62,7 @@
             this.gbPrincipal.TabIndex = 0;
             this.gbPrincipal.TabStop = false;
             this.gbPrincipal.Text = "Seleccione el producto a realizar su reseña";
+            this.gbPrincipal.Enter += new System.EventHandler(this.gbPrincipal_Enter);
             // 
             // btnSalir
             // 
@@ -152,20 +153,12 @@
             this.lbListadoProductos.Size = new System.Drawing.Size(177, 212);
             this.lbListadoProductos.TabIndex = 0;
             // 
-            // cbValoracion
+            // txtValoracion
             // 
-            this.cbValoracion.FormattingEnabled = true;
-            this.cbValoracion.Items.AddRange(new object[] {
-            "",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5"});
-            this.cbValoracion.Location = new System.Drawing.Point(321, 106);
-            this.cbValoracion.Name = "cbValoracion";
-            this.cbValoracion.Size = new System.Drawing.Size(54, 21);
-            this.cbValoracion.TabIndex = 11;
+            this.txtValoracion.Location = new System.Drawing.Point(321, 106);
+            this.txtValoracion.Name = "txtValoracion";
+            this.txtValoracion.Size = new System.Drawing.Size(239, 20);
+            this.txtValoracion.TabIndex = 11;
             // 
             // frmPrincipal
             // 
@@ -195,7 +188,7 @@
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label lbNombre;
         private System.Windows.Forms.ListBox lbListadoProductos;
-        private System.Windows.Forms.ComboBox cbValoracion;
+        private System.Windows.Forms.TextBox txtValoracion;
     }
 }
 
